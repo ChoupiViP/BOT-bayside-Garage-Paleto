@@ -1,12 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>Mon Bot Discord</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bayside Garage Paleto — Bot Discord</title>
+  <meta name="description" content="Bot Discord du garage Bayside Garage Paleto : tickets, avis, candidatures, heures de service et sanctions.">
+  <meta property="og:title" content="Bayside Garage Paleto — Bot Discord">
+  <meta property="og:description" content="Tickets, avis, candidatures, heures de service et sanctions, directement dans Discord.">
+  <meta property="og:image" content="assets/emblem.webp">
+  <meta name="theme-color" content="#0a0907">
+  <link rel="icon" href="assets/emblem.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --asphalt: #0a0907;
+      --panel: #141210;
+      --line: #2b2722;
+      --sun: #f08a1c;
+      --amber: #ffb347;
+      --cream: #fff1d6;
+      --smoke: #a39a8c;
+      --go: #4cc22f;
+      --stop: #e0342f;
+      --head: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+      --body: "Barlow", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--asphalt);
+      color: var(--cream);
+      font: 400 1.0625rem/1.6 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--amber); text-underline-offset: 3px; }
+    a:hover { color: #fff; }
+    :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+
+    /* Damier : la seule décoration forte de la page, repris des drapeaux du logo. */
+    .checker {
+      height: 20px;
+      background:
+        conic-gradient(var(--cream) 25%, var(--asphalt) 0 50%, var(--cream) 0 75%, var(--asphalt) 0) 0 0 / 20px 20px;
+      border-bottom: 2px solid var(--sun);
+    }
+
+    .wrap { width: min(1080px, 100% - 40px); margin: 0 auto; }
+
+    /* Hero */
+    .hero { padding: 56px 0 72px; }
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+      gap: 48px;
+      align-items: center;
+    }
+    .hero h1 {
+      font: 700 clamp(2.6rem, 6vw, 4.4rem)/1 var(--head);
+      letter-spacing: -.01em;
+      margin: 0 0 20px;
+      color: #fff;
+    }
+    .hero h1 span { display: block; color: var(--amber); }
+    .lead { max-width: 34rem; font-size: 1.2rem; color: var(--cream); margin: 0 0 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      font: 600 1.05rem/1 var(--head);
+      padding: 14px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 2px solid var(--sun);
+      color: var(--cream);
+      transition: background-color .15s, color .15s;
+    }
+    .btn:hover { background: var(--sun); color: var(--asphalt); }
+    .btn.primary { background: var(--sun); color: var(--asphalt); }
+    .btn.primary:hover { background: var(--amber); border-color: var(--amber); }
+    .emblem { width: 100%; height: auto; display: block; mix-blend-mode: lighten;
+      -webkit-mask-image: linear-gradient(#000 80%, transparent);
+              mask-image: linear-gradient(#000 80%, transparent); }
+
+    /* Section */
+    section { padding: 64px 0; border-top: 1px solid var(--line); }
+    h2 { font: 700 clamp(1.7rem, 3.5vw, 2.3rem)/1.1 var(--head); margin: 0 0 8px; color: #fff; }
+    .sub { color: var(--smoke); max-width: 36rem; margin: 0 0 32px; }
+
+    /* Bon de travail : la liste des fonctions, présentée comme une fiche d'atelier. */
+    .slip { background: var(--panel); border: 1px solid var(--line); border-left: 6px solid var(--sun); border-radius: 4px; }
+    .job { display: grid; grid-template-columns: 220px 1fr; gap: 8px 32px; padding: 20px 24px; border-bottom: 1px dashed var(--line); }
+    .job:last-child { border-bottom: 0; }
+    .job h3 { font: 600 1.25rem/1.25 var(--head); margin: 0; color: var(--amber); }
+    .job p { margin: 0; color: var(--cream); }
+    .job code { font: 500 .95rem var(--body); background: #221e19; color: var(--amber); padding: 2px 7px; border-radius: 3px; white-space: nowrap; }
+    .job small { display: block; color: var(--smoke); margin-top: 4px; font-size: .95rem; }
+
+    /* Recrutement */
+    .posters { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 28px; align-items: start; }
+    figure { margin: 0; }
+    figure img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--line); background: #000; }
+    figcaption { margin-top: 10px; color: var(--smoke); font-size: .95rem; }
+    .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+    .dot.go { background: var(--go); } .dot.stop { background: var(--stop); }
+
+    footer { padding: 36px 0 56px; border-top: 1px solid var(--line); color: var(--smoke); font-size: .95rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+
+    @media (max-width: 820px) {
+      .hero { padding-top: 36px; }
+      .hero .wrap { grid-template-columns: 1fr; gap: 24px; }
+      .emblem { max-width: 340px; margin: 0 auto; order: -1; }
+      .job { grid-template-columns: 1fr; padding: 18px; }
+    }
+    @media (max-width: 520px) {
+      .posters { grid-template-columns: 1fr 1fr; gap: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+  </style>
 </head>
 <body>
-  <h1>Bienvenue</h1>
-  <p>Bot Discord officiel</p>
-  <a href="terms.html">Conditions d'utilisation</a><br>
-  <a href="privacy.html">Politique de confidentialité</a>
+  <div class="checker" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Le bot du garage <span>Bayside Garage Paleto</span></h1>
+        <p class="lead">Tickets, avis clients, candidatures, heures de service et sanctions : tout ce que l'équipe gère au quotidien, directement dans Discord.</p>
+        <div class="actions">
+          <a class="btn primary" href="terms.html">Conditions d'utilisation</a>
+          <a class="btn" href="privacy.html">Politique de confidentialité</a>
+        </div>
+      </div>
+      <img class="emblem" src="assets/emblem.webp" alt="Logo Bayside Rev &amp; Ride : deux clés croisées devant un piston et un engrenage, sur un coucher de soleil avec des palmiers" width="760" height="586">
+    </div>
+  </header>
+
+  <main>
+    <section id="fonctions">
+      <div class="wrap">
+        <h2>Ce que fait le bot</h2>
+        <p class="sub">Un outil interne, relié au site du garage. Les commandes d'administration sont réservées aux administrateurs du serveur.</p>
+
+        <div class="slip">
+          <div class="job">
+            <h3>Tickets</h3>
+            <p>Un salon privé par demande. À la fermeture, la transcription est envoyée aux participants et dans le salon de logs.
+              <small>Commande <code>/panel_ticket</code>. Transcriptions conservées 15 jours.</small></p>
+          </div>
+          <div class="job">
+            <h3>Avis sur les mécanos</h3>
+            <p>Les clients notent leur mécano de 1 à 5 et laissent un commentaire, publiés dans le salon d'avis.
+              <small>Commande <code>/panel_avis</code></small></p>
+          </div>
+          <div class="job">
+            <h3>Candidatures</h3>
+            <p>Chaque candidature envoyée depuis le site arrive dans le salon du staff, avec les boutons Accepter et Refuser pour la Direction et les Managers.</p>
+          </div>
+          <div class="job">
+            <h3>Heures de service</h3>
+            <p>Chacun voit ses heures et son quota de la semaine. La Direction et les Managers voient celles de l'équipe.
+              <small>Commandes <code>/heures</code> et <code>/lier_compte</code></small></p>
+          </div>
+          <div class="job">
+            <h3>Sanctions</h3>
+            <p>Une sanction enregistrée sur le site est publiée dans le fil Discord de l'employé concerné.
+              <small>Commande <code>/lier_fil</code></small></p>
+          </div>
+          <div class="job">
+            <h3>Recrutement</h3>
+            <p>Un seul réglage affiche l'état du recrutement dans le salon prévu : ouvert ou fermé.
+              <small>Commande <code>/recrutement</code></small></p>
+          </div>
+          <div class="job">
+            <h3>Accueil et rôles</h3>
+            <p>Message de bienvenue et rôles automatiques pour les nouveaux membres, réglables par un administrateur.
+              <small>Commande <code>/setup</code></small></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recrutement">
+      <div class="wrap">
+        <h2>L'état du recrutement</h2>
+        <p class="sub">Voici les deux affiches que le bot publie quand un responsable change l'état du recrutement.</p>
+        <div class="posters">
+          <figure>
+            <img src="assets/recrutement-ouvert.webp" alt="Affiche « Recrutement ouvert » sur le logo Bayside Rev &amp; Ride" width="520" height="679" loading="lazy">
+            <figcaption><span class="dot go" aria-hidden="true"></span>Recrutement ouvert</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/recrutement-ferme.webp" alt="Affiche « Recrutement fermé » sur le logo Bayside Rev &amp; Ride" width="520" height="679" loading="lazy">
+            <figcaption><span class="dot stop" aria-hidden="true"></span>Recrutement fermé</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>Bot du garage Bayside Garage Paleto, serveur de jeu de rôle.</span>
+      <nav>
+        <a href="terms.html">Conditions d'utilisation</a>
+        <a href="privacy.html">Politique de confidentialité</a>
+        <a href="https://github.com/ChoupiViP">GitHub</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
