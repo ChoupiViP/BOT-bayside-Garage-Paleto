@@ -1,3 +1,106 @@
-Ce bot ne collecte aucune donnée personnelle.
-Les données (comme les messages) sont uniquement utilisées pour le bon fonctionnement du bot.
-Aucune donnée n'est stockée ou partagée.
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Politique de confidentialité — Bayside Garage Paleto (bot Discord)</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; background: #1e1f22; color: #dbdee1; font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; }
+    h1 { font-size: 1.9rem; margin: 0 0 4px; color: #fff; }
+    h2 { font-size: 1.2rem; margin: 2rem 0 .5rem; color: #fff; }
+    p, li { margin: .4rem 0; }
+    ul { padding-left: 1.3rem; }
+    a { color: #7c8cff; }
+    .meta { color: #949ba4; font-size: .9rem; margin-bottom: 1.5rem; }
+    nav { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #3a3c41; font-size: .95rem; }
+    nav a { margin-right: 1rem; }
+    table { border-collapse: collapse; width: 100%; margin: .8rem 0; font-size: .95rem; }
+    th, td { text-align: left; padding: 8px 10px; border: 1px solid #3a3c41; vertical-align: top; }
+    th { background: #2b2d31; color: #fff; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Politique de confidentialité</h1>
+  <p class="meta">Bot Discord « Bayside Garage Paleto » · Dernière mise à jour : 18 octobre 2026</p>
+
+  <p>Ce bot est un outil interne du garage Bayside Garage Paleto (serveur de jeu de rôle). Cette page explique quelles données il traite, pourquoi, combien de temps elles sont conservées et comment demander leur suppression.</p>
+
+  <h2>1. Données traitées</h2>
+  <table>
+    <tr><th>Fonction</th><th>Données</th><th>Où elles vont</th></tr>
+    <tr>
+      <td>Tickets</td>
+      <td>Pseudo et identifiant Discord des participants, contenu des messages échangés dans le ticket (texte, mentions, noms de pièces jointes).</td>
+      <td>Une transcription HTML du ticket est générée à sa fermeture. Elle est envoyée en message privé aux participants et publiée dans le salon de logs du serveur (lien inclus).</td>
+    </tr>
+    <tr>
+      <td>Avis mécanos</td>
+      <td>Identifiant Discord de l'auteur, nom du mécano, note de 1 à 5 et commentaire saisis dans le formulaire.</td>
+      <td>Publiés sous forme de message dans le salon d'avis du serveur.</td>
+    </tr>
+    <tr>
+      <td>Candidatures</td>
+      <td>Nom et âge du personnage (RP), pseudo Discord, poste souhaité, expérience, spécialités, disponibilités, motivation, score et décision (acceptée ou refusée), saisis par le candidat via le site du garage.</td>
+      <td>Base de données du site (Supabase). Le bot republie la candidature dans le salon réservé au staff et enregistre la décision prise avec les boutons Accepter / Refuser.</td>
+    </tr>
+    <tr>
+      <td>Heures et quotas (<code>/heures</code>)</td>
+      <td>Lien entre un compte Discord et une fiche employé, et heures de service de la semaine.</td>
+      <td>Lues dans la base de données du site (Supabase) et affichées en réponse à la commande. La vue d'équipe est réservée à la Direction et aux Managers.</td>
+    </tr>
+    <tr>
+      <td>Sanctions</td>
+      <td>Contenu d'une sanction enregistrée sur le site.</td>
+      <td>Publiée par le bot dans le fil Discord de l'employé concerné.</td>
+    </tr>
+    <tr>
+      <td>Configuration</td>
+      <td>Identifiants de salons, de rôles et de serveurs, message de bienvenue.</td>
+      <td>Base de données du site (Supabase).</td>
+    </tr>
+    <tr>
+      <td>Arrivée d'un membre</td>
+      <td>Identifiant du nouveau membre.</td>
+      <td>Utilisé pour envoyer le message de bienvenue et attribuer les rôles automatiques, s'ils sont activés. Rien n'est enregistré.</td>
+    </tr>
+  </table>
+  <p>Le bot lit le contenu des messages uniquement pour générer les transcriptions de tickets. Il n'enregistre pas les messages des autres salons, ne tient aucun historique de conversation et ne lit pas vos messages privés.</p>
+
+  <h2>2. Pourquoi ces données</h2>
+  <p>Uniquement pour faire fonctionner le garage : gérer les tickets, publier les avis, traiter les candidatures, suivre les heures de service et appliquer les sanctions. Elles ne sont ni vendues, ni utilisées pour de la publicité, ni partagées avec des tiers à d'autres fins.</p>
+
+  <h2>3. Durée de conservation</h2>
+  <ul>
+    <li><strong>Transcriptions de tickets :</strong> supprimées automatiquement du serveur du bot après 15 jours. Les copies déjà envoyées en message privé ou publiées dans le salon de logs restent sur Discord tant que les messages existent.</li>
+    <li><strong>Avis :</strong> conservés tant que le message reste dans le salon d'avis.</li>
+    <li><strong>Candidatures, heures, sanctions et liaison de comptes :</strong> conservées dans la base de données du site tant que nécessaire à la gestion du garage (les sanctions sont archivées, jamais supprimées).</li>
+    <li><strong>Configuration :</strong> conservée tant que le bot est installé sur le serveur.</li>
+  </ul>
+
+  <h2>4. Hébergement et sous-traitants</h2>
+  <ul>
+    <li><strong>Discord</strong> héberge les serveurs et les messages (<a href="https://discord.com/privacy">politique de Discord</a>).</li>
+    <li><strong>Supabase</strong> héberge la base de données du site du garage (<a href="https://supabase.com/privacy">politique de Supabase</a>).</li>
+    <li><strong>Un hébergeur d'applications</strong> fait tourner le bot et stocke temporairement les transcriptions de tickets.</li>
+  </ul>
+  <p>Les transcriptions sont accessibles à toute personne disposant du lien exact. Ne partagez pas ce lien.</p>
+
+  <h2>5. Vos droits</h2>
+  <p>Vous pouvez demander à accéder à vos données, à les corriger ou à les faire supprimer (par exemple une transcription, un avis ou une candidature). Pour cela, ouvrez un ticket sur le serveur Discord du garage ou contactez le développeur du bot via <a href="https://github.com/ChoupiViP">son profil GitHub</a>. Nous répondrons dans un délai raisonnable. Vous pouvez aussi retirer le bot du serveur à tout moment, ce qui met fin à tout nouveau traitement.</p>
+
+  <h2>6. Sécurité</h2>
+  <p>Les échanges avec la base de données sont protégés par un secret partagé et les accès sont limités selon le rôle (Employé, Manager, Direction). Aucun système n'est totalement infaillible, mais nous limitons les données collectées au strict nécessaire.</p>
+
+  <h2>7. Âge minimum</h2>
+  <p>Le bot suit les règles de Discord : il n'est pas destiné aux personnes qui n'ont pas l'âge minimum requis par Discord dans leur pays.</p>
+
+  <h2>8. Modifications</h2>
+  <p>Cette politique peut évoluer avec le bot. La date de dernière mise à jour figure en haut de cette page.</p>
+
+  <nav><a href="index.html">Accueil</a><a href="terms.html">Conditions d'utilisation</a></nav>
+</main>
+</body>
+</html>
