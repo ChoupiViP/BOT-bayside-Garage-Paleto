@@ -140,22 +140,27 @@
         <div class="slip">
           <div class="job">
             <h3>Tickets</h3>
-            <p>Un salon privé par demande. À la fermeture, la transcription est envoyée aux participants et dans le salon de logs.
+            <p>Un salon privé par demande, avec une raison à choisir : recrutement, partenariat, contrat ou autres. Les rôles concernés sont prévenus et le salon est rangé dans la bonne catégorie. À la fermeture, la transcription est envoyée aux participants et dans le salon de logs.
               <small>Commande <code>/panel_ticket</code>. Transcriptions conservées 15 jours.</small></p>
           </div>
           <div class="job">
             <h3>Avis sur les mécanos</h3>
-            <p>Les clients notent leur mécano de 1 à 5 et laissent un commentaire, publiés dans le salon d'avis.
+            <p>Les clients choisissent leur mécano dans une liste, le notent de 1 à 5 et laissent un commentaire. L'avis est publié dans le salon d'avis et le mécano est prévenu.
               <small>Commande <code>/panel_avis</code></small></p>
           </div>
           <div class="job">
             <h3>Candidatures</h3>
-            <p>Chaque candidature envoyée depuis le site arrive dans le salon du staff, avec les boutons Accepter et Refuser pour la Direction et les Managers.</p>
+            <p>Chaque candidature envoyée depuis le site arrive dans le salon du staff, avec les boutons Accepter et Refuser pour la Direction et les Managers. Quand le candidat confirme avoir rempli le formulaire, le nom du salon passe en ✅ et le staff est prévenu.</p>
           </div>
           <div class="job">
             <h3>Heures de service</h3>
             <p>Chacun voit ses heures et son quota de la semaine. La Direction et les Managers voient celles de l'équipe.
               <small>Commandes <code>/heures</code> et <code>/lier_compte</code></small></p>
+          </div>
+          <div class="job">
+            <h3>Planning</h3>
+            <p>Un rappel est envoyé le dimanche dans le fil privé de chaque employé qui n'a pas fini son planning : il reste jusqu'au lundi 22h. Le planning se verrouille ensuite automatiquement.
+              <small>Commande <code>/planning_rappel</code></small></p>
           </div>
           <div class="job">
             <h3>Sanctions</h3>
@@ -170,7 +175,7 @@
           <div class="job">
             <h3>Accueil et rôles</h3>
             <p>Message de bienvenue et rôles automatiques pour les nouveaux membres, réglables par un administrateur.
-              <small>Commande <code>/setup</code></small></p>
+              <small>Commandes <code>/setup</code> (rôles et catégories par raison de ticket) et <code>/creer_categories</code></small></p>
           </div>
         </div>
       </div>
