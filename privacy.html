@@ -24,7 +24,7 @@
 <body>
 <main>
   <h1>Politique de confidentialité</h1>
-  <p class="meta">Bot Discord « Bayside Garage Paleto » · Dernière mise à jour : 18 octobre 2026</p>
+  <p class="meta">Bot Discord « Bayside Garage Paleto » · Dernière mise à jour : 16 novembre 2026</p>
 
   <p>Ce bot est un outil interne du garage Bayside Garage Paleto (serveur de jeu de rôle). Cette page explique quelles données il traite, pourquoi, combien de temps elles sont conservées et comment demander leur suppression.</p>
 
@@ -62,6 +62,11 @@
       <td>Publiés dans le salon choisi. Les derniers votes sont gardés dans la configuration du bot (Supabase) pour pouvoir compter les voix ; les plus anciens sont oubliés.</td>
     </tr>
     <tr>
+      <td>Véhicules du garage</td>
+      <td>Pour chaque sortie ou retour de véhicule indiqué dans les salons de logs du garage : nom du personnage et son numéro en ville, numéro et nom du véhicule, propriété, type de mouvement (sortie ou retour) et heure.</td>
+      <td>Enregistrées dans la base de données du site (Supabase) et affichées sur la page « Véhicules » du site, réservée au personnel. Le bot ne fait que lire ces salons, il n'y écrit rien.</td>
+    </tr>
+    <tr>
       <td>Sanctions</td>
       <td>Contenu d'une sanction enregistrée sur le site.</td>
       <td>Publiée par le bot dans le fil Discord de l'employé concerné.</td>
@@ -77,7 +82,7 @@
       <td>Utilisé pour envoyer le message de bienvenue et attribuer les rôles automatiques, s'ils sont activés. Rien n'est enregistré.</td>
     </tr>
   </table>
-  <p>Le bot lit le contenu des messages uniquement pour générer les transcriptions de tickets. Il n'enregistre pas les messages des autres salons, ne tient aucun historique de conversation et ne lit pas vos messages privés.</p>
+  <p>Le bot lit le contenu des messages pour générer les transcriptions de tickets, et lit uniquement les logs de véhicules dans les salons de logs du garage (seuls les champs du tableau ci-dessus sont gardés). Il n'enregistre pas les messages des autres salons, ne tient aucun historique de conversation et ne lit pas vos messages privés.</p>
 
   <h2>2. Pourquoi ces données</h2>
   <p>Uniquement pour faire fonctionner le garage : gérer les tickets, publier les avis, traiter les candidatures, suivre les heures de service et appliquer les sanctions. Elles ne sont ni vendues, ni utilisées pour de la publicité, ni partagées avec des tiers à d'autres fins.</p>
@@ -86,6 +91,7 @@
   <ul>
     <li><strong>Transcriptions de tickets :</strong> supprimées automatiquement du serveur du bot après 15 jours. Les copies déjà envoyées en message privé ou publiées dans le salon de logs restent sur Discord tant que les messages existent.</li>
     <li><strong>Avis :</strong> conservés tant que le message reste dans le salon d'avis.</li>
+    <li><strong>Sorties et retours de véhicules :</strong> conservés dans la base de données du site tant que nécessaire à la gestion du garage.</li>
     <li><strong>Candidatures, heures, sanctions et liaison de comptes :</strong> conservées dans la base de données du site tant que nécessaire à la gestion du garage (les sanctions sont archivées, jamais supprimées).</li>
     <li><strong>Configuration :</strong> conservée tant que le bot est installé sur le serveur.</li>
   </ul>
