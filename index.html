@@ -169,8 +169,13 @@
           </div>
           <div class="job">
             <h3>Sanctions</h3>
-            <p>Une sanction enregistrée sur le site est publiée dans le fil Discord de l'employé concerné.
+            <p>Une sanction enregistrée sur le site est publiée dans le fil Discord de l'employé concerné, avec son niveau (de 1 à 4), son motif et, si la Direction en a fixé une, sa durée. Quand la durée est écoulée, la sanction passe automatiquement en « terminée » et le message du fil est mis à jour.
               <small>Commande <code>/lier_fil</code></small></p>
+          </div>
+          <div class="job">
+            <h3>Absences du planning</h3>
+            <p>Quand un employé déclare une absence sur le site, la demande est publiée dans un salon choisi, avec les rôles prévenus et les boutons Accepter et Refuser. Seule la Direction peut répondre (son compte Discord doit être lié à son profil sur le site). La décision met à jour le message et prévient l'employé dans son fil.
+              <small>Salon et rôles à régler dans le dashboard</small></p>
           </div>
           <div class="job">
             <h3>Recrutement</h3>
@@ -199,7 +204,7 @@
           </div>
           <div class="job">
             <h3>Dashboard web</h3>
-            <p>Toute la configuration du bot (tickets, salons, rôles, message de bienvenue) se règle depuis une page web, avec des listes déroulantes. On peut aussi y ouvrir ou fermer le recrutement d'un clic et consulter le journal des dernières modifications (qui a changé quoi, et quand). Connexion avec Discord, réservée aux administrateurs du serveur et aux rôles qu'ils autorisent, par exemple Patron et Co-patron. Les rôles avec des permissions sensibles (administrateur, expulsion, bannissement, exclusion) ne peuvent pas être attribués automatiquement.
+            <p>Toute la configuration du bot (tickets, salons, rôles, message de bienvenue) se règle depuis une page web, avec des listes déroulantes. On peut aussi y ouvrir ou fermer le recrutement d'un clic, activer le mode maintenance, régler l'heure du rappel de planning du dimanche et le blocage automatique du lundi, voir les statistiques du mois (tickets ouverts, notes moyennes des mécanos, comptées à partir de leur mise en service) et consulter le journal des dernières modifications (qui a changé quoi, et quand). Connexion avec Discord, réservée aux administrateurs du serveur et aux rôles qu'ils autorisent, par exemple Patron et Co-patron. Les rôles avec des permissions sensibles (administrateur, expulsion, bannissement, exclusion) ne peuvent pas être attribués automatiquement.
               <small><a href="https://dashboard-bayside.viphome.fr/dashboard/" rel="noopener">Ouvrir le dashboard</a>. Alternative à la commande <code>/setup</code></small></p>
           </div>
         </div>
